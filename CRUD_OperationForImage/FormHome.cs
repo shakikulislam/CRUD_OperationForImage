@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CRUD_OperationForImage
 {
-    public partial class Form1 : Form
+    public partial class FormHome : Form
     {
-        public Form1()
+        public FormHome()
         {
             InitializeComponent();
         }
