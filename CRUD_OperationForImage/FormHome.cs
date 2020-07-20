@@ -28,7 +28,10 @@ namespace CRUD_OperationForImage
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "JPG|*.jpg|PNG|*.png", Multiselect = false })
             {
-                pictureBox1.Image = openFileDialog.ShowDialog() == DialogResult.OK ? Image.FromFile(openFileDialog.FileName) : Properties.Resources.DefaultAvator;
+                if (openFileDialog.ShowDialog()==DialogResult.OK)
+                {
+                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                }
             }
         }
 
@@ -133,6 +136,43 @@ namespace CRUD_OperationForImage
             pictureBox1.Image = Resources.DefaultAvator;
             LoadId();
             textBoxName.Focus();
+        }
+
+        private void buttonImageClear_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Resources.DefaultAvator;
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+            ImageConverter imageConverter = new ImageConverter();
+            byte[] bytesImage = (byte[])imageConverter.ConvertTo(pictureBox1.Image, Type.GetType("System.Byte[]"));
+
+
+            _sqlConnection.Close();
+            _sqlConnection.Open();
+            _sqlCommand = new SqlCommand("SELECT *FROM TableImage WHERE id='"+textBoxId.Text+"'", _sqlConnection);
+            _sqlDataReader = _sqlCommand.ExecuteReader();
+            if (_sqlDataReader.Read())
+            {
+                _sqlDataReader.Close();
+
+                _sqlCommand = new SqlCommand("UPDATE TableImage SET Name='"+textBoxName.Text+"', Picture=@picture WHERE id='"+textBoxId.Text+"'" ,_sqlConnection);
+                _sqlCommand.Parameters.AddWithValue("@picture", bytesImage);
+                var isUpdate=_sqlCommand.ExecuteNonQuery();
+                if (isUpdate>0)
+                {
+                    labelMessge.ForeColor = Color.Green;
+                    labelMessge.Text = "Update Successfull...";
+                    ViewForDataGrid();
+                }
+                else
+                {
+                    labelMessge.ForeColor = Color.Red;
+                    labelMessge.Text = "Update Failed...";
+                }
+            }
         }
 
 

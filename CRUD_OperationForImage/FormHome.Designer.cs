@@ -34,12 +34,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonAddImage = new System.Windows.Forms.Button();
             this.buttonSelect = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelMessge = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonAddImage = new System.Windows.Forms.Button();
+            this.buttonImageClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -107,17 +108,7 @@
             this.buttonUpdate.TabIndex = 12;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddImage
-            // 
-            this.buttonAddImage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddImage.Location = new System.Drawing.Point(46, 270);
-            this.buttonAddImage.Name = "buttonAddImage";
-            this.buttonAddImage.Size = new System.Drawing.Size(166, 40);
-            this.buttonAddImage.TabIndex = 13;
-            this.buttonAddImage.Text = "Add Image";
-            this.buttonAddImage.UseVisualStyleBackColor = true;
-            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSelect
             // 
@@ -172,11 +163,34 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // buttonAddImage
+            // 
+            this.buttonAddImage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddImage.Location = new System.Drawing.Point(46, 270);
+            this.buttonAddImage.Name = "buttonAddImage";
+            this.buttonAddImage.Size = new System.Drawing.Size(85, 40);
+            this.buttonAddImage.TabIndex = 13;
+            this.buttonAddImage.Text = "Add Image";
+            this.buttonAddImage.UseVisualStyleBackColor = true;
+            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
+            // 
+            // buttonImageClear
+            // 
+            this.buttonImageClear.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImageClear.Location = new System.Drawing.Point(137, 270);
+            this.buttonImageClear.Name = "buttonImageClear";
+            this.buttonImageClear.Size = new System.Drawing.Size(75, 40);
+            this.buttonImageClear.TabIndex = 18;
+            this.buttonImageClear.Text = "Clear";
+            this.buttonImageClear.UseVisualStyleBackColor = true;
+            this.buttonImageClear.Click += new System.EventHandler(this.buttonImageClear_Click);
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 351);
+            this.Controls.Add(this.buttonImageClear);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.labelMessge);
             this.Controls.Add(this.buttonDelete);
@@ -209,11 +223,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonAddImage;
         private System.Windows.Forms.Button buttonSelect;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Label labelMessge;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonAddImage;
+        private System.Windows.Forms.Button buttonImageClear;
     }
 }
 
