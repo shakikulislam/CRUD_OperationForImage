@@ -110,7 +110,7 @@ namespace CRUD_OperationForImage
             {
                 if (_sqlDataReader["Picture"] != DBNull.Value)
                 {
-                    MemoryStream stream = new MemoryStream((byte[]) _sqlDataReader["Picture"]);
+                    MemoryStream stream = new MemoryStream((byte[])_sqlDataReader["Picture"]);
                     pictureBox1.Image = Image.FromStream(stream);
                 }
                 else
