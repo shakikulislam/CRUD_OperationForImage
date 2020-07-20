@@ -45,6 +45,8 @@ namespace CRUD_OperationForImage
             {
                 textBoxId.Text = _sqlDataReader["id"] != DBNull.Value ? ((int)_sqlDataReader["id"]+ 1).ToString() : "1";
             }
+            textBoxName.Clear();
+            pictureBox1.Image = Resources.DefaultAvator;
         }
 
         private void ViewForDataGrid()
@@ -173,6 +175,27 @@ namespace CRUD_OperationForImage
                     labelMessge.Text = "Update Failed...";
                 }
             }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            _sqlConnection.Close();
+            _sqlConnection.Open();
+            _sqlCommand = new SqlCommand("DELETE TableImage WHERE id='"+textBoxId.Text+"'", _sqlConnection);
+            var isDelete= _sqlCommand.ExecuteNonQuery();
+            if (isDelete>0)
+            {
+                labelMessge.ForeColor = Color.Red;
+                labelMessge.Text = "Delete Successfull...";
+            }
+            else
+            {
+                labelMessge.ForeColor = Color.Red;
+                labelMessge.Text = "Delete Failed...";
+            }
+
+            ViewForDataGrid();
+            LoadId();
         }
 
 
